@@ -1,6 +1,5 @@
 var Hapi = require('hapi');
 
-
 var routes = [
     { method: 'GET', path: '/', config: { handler: getHome } },
     { method: 'GET', path: '/products', config: { handler: getProducts, validate: { query: { name: Hapi.types.String() } } } },
@@ -8,13 +7,6 @@ var routes = [
     { method: 'POST', path: '/products', config: { handler: addProduct, validate: { payload: { name: Hapi.types.String().required().min(3) } } } }
 ];
 
-var server = new Hapi.Server(8000);
-server.route(routes);
-
-server.start(function () {
-
-    console.log('Server started at: ' + server.info.uri);
-});
 
 var products = [
     {
@@ -65,5 +57,11 @@ function addProduct(request, reply) {
 }
 
 function getHome(request, reply){
-    reply({data: 'Data'});
+    reply({data: 'Data'})
 }
+
+
+var server = new Hapi.Server(8000);
+
+exports.server = server;
+exports.routes = routes;
