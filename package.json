@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,9 @@
     "nodemon": "~1.0.13"
   },
   "dependencies": {
-    "bower": "~1.2.8",
-    "hapi": "spumko/hapi.git"
-  }
+    "bower": "~1.7.5",
+    "hapi": "spumko/hapi.git",
+    "snyk": "^1.88.0"
+  },
+  "snyk": true
 }
